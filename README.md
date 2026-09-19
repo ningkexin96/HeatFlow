@@ -12,6 +12,7 @@
 | **高危审批 Guardrail** | 停电 / 危急缺陷工单签发前输出 Diff 并等待人工确认 |
 | **渐进式规则加载** | 仅注入规则索引，按需调用工具加载专属规则子集，控制 Token 膨胀 |
 | **可观测性** | 全过程打印 Step 编号、思考摘要、工具入参/返回、审批与最终报告 |
+| **TUI 交互界面** | 全屏面板式终端界面：标题栏 + 实时执行链路区 + 输入框，支持滚动与 y/n 审批 |
 
 ## 2. 业务规则（内置参考）
 
@@ -80,10 +81,17 @@
 │   │   ├── generate-dispatch-order.ts
 │   │   ├── load-domain-rules.ts
 │   │   └── index.ts
-│   └── model/                   # 模型驱动层
-│       ├── openai-adapter.ts    #   真实 OpenAI 兼容适配器
-│       ├── mock-adapter.ts      #   离线确定性脚本模型
-│       └── index.ts
+│   ├── model/                   # 模型驱动层
+│   │   ├── openai-adapter.ts    #   真实 OpenAI 兼容适配器
+│   │   ├── mock-adapter.ts      #   离线确定性脚本模型
+│   │   └── index.ts
+│   └── tui/                     # 全屏 TUI 交互界面
+│       ├── ansi.ts              #   ANSI 转义与样式
+│       ├── width.ts             #   中日韩宽字符列宽处理
+│       ├── terminal.ts          #   终端抽象 + 按键解析
+│       ├── app.ts               #   布局 / 滚动 / 按键状态机
+│       ├── index.ts             #   TUI 启动入口
+│       └── main.ts              #   npm run tui 入口
 ├── test/                        # 单元 + 端到端测试
 ├── logs/                        # 测试链路日志产物（运行 demo 后生成）
 ├── package.json
@@ -136,6 +144,29 @@ npx tsx src/cli.ts --text "220kV 某变电站母排搭接面，环境温度 20�
 ```
 
 > 默认审批模式为 `interactive`：遇到高危工单时，会在命令行打印 Diff 并等待输入 `y/n` 确认后才落盘。
+
+### 交互式 TUI 界面（全屏）
+
+```bash
+npm run tui                 # 启动全屏 TUI
+npx tsx src/cli.ts --tui    # 等价的 --tui 方式
+```
+
+TUI 为全屏面板布局：顶部标题栏（模型 / 审批模式 / 状态）、中部实时刷新的执行链路滚动区、底部输入框与快捷键提示。
+
+TUI 内可用命令：
+
+| 命令 | 说明 |
+| :--- | :--- |
+| 直接输入巡检文本 + 回车 | 开始研判 |
+| `:case 1` / `:case 2` | 运行内置测试用例 |
+| `:mock` / `:real` | 切换离线脚本模型 / 真实大模型 |
+| `:approve interactive` / `:approve auto` / `:approve reject` | 设置高危工单审批模式 |
+| `:clear` | 清空链路区 |
+| `:help` | 查看命令 |
+| `:quit` | 退出 |
+
+快捷键：`↑` `↓` `PgUp` `PgDn` 滚动历史，`Ctrl+U` 清空输入，`Ctrl+C` 退出。高危工单会弹出 `按 y 批准 / n 拒绝` 的审批提示。
 
 ### 运行测试
 

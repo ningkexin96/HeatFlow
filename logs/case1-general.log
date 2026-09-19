@@ -105,16 +105,16 @@
   ← 工具返回: generate_dispatch_order
      {
        "issued": true,
-       "order_no": "WO-20260919045240-0PSB",
+       "order_no": "WO-20260919052220-PAYB",
        "equipment_id": "220kV-某变电站-1号主变-A相-隔离开关触头",
        "defect_level": "general",
        "requires_outage": false,
        "response_deadline": "纳入常规检修计划",
        "solution": "纳入常规检修计划，加强测温巡视监控。物料：SGIET-100（通用型防护材料）。工艺：停电/带电安全措施确认（按现场规程执行）；接触面表面打磨除氧化层，清除油污与灰尘；涂覆 SGIET-100（通用型防护材料）；恢复连接后按标准紧固力矩校核。",
        "material": "SGIET-100（通用型防护材料）",
-       "file_path": "D:\\项目考察书\\orders\\WO-20260919045240-0PSB.json",
+       "file_path": "D:\\项目考察书\\orders\\WO-20260919052220-PAYB.json",
        "approval": "auto-no-approval-required",
-       "content": "{\n  \"order_no\": \"WO-20260919045240-0PSB\",\n  \"equipment_id\": \"220kV-某变电站-1号主变-A相-隔离开关触头\",\n  \"defect_level\": \"general\",\n  \"defect_desc\": \"温升 ΔT=33℃，绝对温度 58℃，铜质，常规户外\",\n  \"requires_outage\": false,\n  \"response_deadline\": \"纳入常规检修计划\",\n  \"solution\": \"纳入常规检修计划，加强测温巡视监控。物料：SGIET-100（通用型防护材料）。工艺：停电/带电安全措施确认（按现场规程执行）；接触面表面打磨除氧化层，清除油污与灰尘；涂覆 SGIET-100（通用型防护材料）；恢复连接后按标准紧固力矩校核。\",\n  \"material\": \"SGIET-100（通用型防护材料）\",\n  \"process_steps\": [],\n  \"safety_notes\": [\n    \"带电作业须保持安全距离并设专人监护\"\n  ],\n  \"status\": \"draft\",\n  \"created_at\": \"2026-09-19T04:52:40.459Z\"\n}"
+       "content": "{\n  \"order_no\": \"WO-20260919052220-PAYB\",\n  \"equipment_id\": \"220kV-某变电站-1号主变-A相-隔离开关触头\",\n  \"defect_level\": \"general\",\n  \"defect_desc\": \"温升 ΔT=33℃，绝对温度 58℃，铜质，常规户外\",\n  \"requires_outage\": false,\n  \"response_deadline\": \"纳入常规检修计划\",\n  \"solution\": \"纳入常规检修计划，加强测温巡视监控。物料：SGIET-100（通用型防护材料）。工艺：停电/带电安全措施确认（按现场规程执行）；接触面表面打磨除氧化层，清除油污与灰尘；涂覆 SGIET-100（通用型防护材料）；恢复连接后按标准紧固力矩校核。\",\n  \"material\": \"SGIET-100（通用型防护材料）\",\n  \"process_steps\": [],\n  \"safety_notes\": [\n    \"带电作业须保持安全距离并设专人监护\"\n  ],\n  \"status\": \"draft\",\n  \"created_at\": \"2026-09-19T05:22:20.260Z\"\n}"
      }
 
 [最终综合研判报告]
@@ -123,7 +123,7 @@
 【加载规则】常规配电/室内接头工艺、隔离开关触头过热专项
 【物料与工艺】主材料：SGIET-100（通用型防护材料）。工艺步骤：1) 停电/带电安全措施确认（按现场规程执行）；2) 接触面表面打磨除氧化层，清除油污与灰尘；3) 涂覆 SGIET-100（通用型防护材料）；4) 恢复连接后按标准紧固力矩校核
 【处置建议】纳入常规检修计划，加强测温巡视监控
-【工单状态】已签发 WO-20260919045240-0PSB（免审批直接签发），落盘 D:\项目考察书\orders\WO-20260919045240-0PSB.json
+【工单状态】已签发 WO-20260919052220-PAYB（免审批直接签发），落盘 D:\项目考察书\orders\WO-20260919052220-PAYB.json
 
 
 [回合结束] outcome=final, 工具调用次数=4

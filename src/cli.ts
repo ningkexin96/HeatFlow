@@ -15,6 +15,7 @@ const USAGE = `HeatFlow · 电气设备发热缺陷智能诊断与工单分流 A
       --mock             强制使用离线脚本模型（默认：无 API Key 自动降级）
       --auto-approve     高危工单自动放行（仅演示）
       --reject           高危工单自动拒绝
+      --tui              启动全屏 TUI 交互界面
   -o, --out <文件>       将执行链路日志写入文件
   -h, --help             显示帮助
 
@@ -22,6 +23,7 @@ const USAGE = `HeatFlow · 电气设备发热缺陷智能诊断与工单分流 A
   npx tsx src/cli.ts --case 1
   npx tsx src/cli.ts --case 2 --auto-approve
   npx tsx src/cli.ts --text "220kV 隔离开关触头温升 55℃ ..."
+  npx tsx src/cli.ts --tui
 `
 
 async function readStdin(): Promise<string> {
@@ -43,6 +45,7 @@ async function main(): Promise<void> {
     reject: false,
     out: '',
     help: false,
+    tui: false,
   }
 
   for (let i = 0; i < argv.length; i++) {
@@ -71,6 +74,9 @@ async function main(): Promise<void> {
       case '-o':
         options.out = argv[++i] ?? ''
         break
+      case '--tui':
+        options.tui = true
+        break
       case '--help':
       case '-h':
         options.help = true
@@ -82,6 +88,12 @@ async function main(): Promise<void> {
 
   if (options.help) {
     process.stdout.write(USAGE)
+    return
+  }
+
+  if (options.tui) {
+    const { runTui } = await import('./tui/index.js')
+    await runTui({ cwd: process.cwd(), mock: options.mock })
     return
   }
 

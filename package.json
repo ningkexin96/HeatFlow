@@ -14,7 +14,8 @@
     "demo": "tsx src/run-cases.ts",
     "case1": "tsx src/run-cases.ts --case 1",
     "case2": "tsx src/run-cases.ts --case 2",
-    "test": "tsx --test test/*.test.ts"
+    "test": "tsx --test test/*.test.ts",
+    "tui": "tsx src/tui/main.ts"
   },
   "dependencies": {
     "zod": "^4.1.5"
