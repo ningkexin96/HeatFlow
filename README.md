@@ -99,7 +99,15 @@
 ### 安装
 
 ```bash
+# 1) 获取代码
+git clone https://github.com/ningkexin96/HeatFlow.git
+cd HeatFlow
+
+# 2) 安装依赖（zod / typescript / tsx 等会自动安装，无需任何全局工具）
 npm install
+
+# 3) 可选：编译到 dist/（质量检查，或需要以编译后的 JS 运行）
+npm run build
 ```
 
 ### 运行内置测试用例（离线，无需 API Key）
